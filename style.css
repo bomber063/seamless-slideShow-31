@@ -1,0 +1,54 @@
+.window{
+    margin:100px auto;
+    width:400px;
+    height: 300px;
+    overflow: hidden;
+}
+/* 对flex的居中布局还不不够熟练 */
+.imgs{ 
+    position: relative;
+}
+
+.imgs > img{ 
+    position: absolute;
+    width: 400px;
+    height: 300px;
+    top:0px;
+    transition: all 0.3s;
+}
+
+.current{
+    transform: translateX(0px);
+    z-index: 1;
+}
+
+.enter{
+    transform: translateX(100%);
+}
+
+.leave{
+    transform: translateX(-100%);
+}
+
+
+
+
+
+/* *{margin:0;padding:0;}
+*{box-sizing: border-box;}
+
+.window{
+  width: 400px;
+  height: 300px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+.images{
+  position: relative;
+}
+.images > img{
+  width: 100%;
+  transition: all 1500ms;
+  position: absolute;
+  top: 0;
+} */
