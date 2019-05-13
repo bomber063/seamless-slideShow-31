@@ -37,6 +37,29 @@ function enter($enter){
 [transitionend](https://developer.mozilla.org/zh-CN/docs/Web/Events/transitionend)  
 transitionend 事件会在 CSS transition 结束后触发. 当transition完成前移除transition时，比如移除css的transition-property 属性，事件将不会被触发.如在transition完成前设置  display 为"none"，事件同样不会被触发。
 
+## 模板字符串 or 模板字面量
+[模板字符串 or 模板字面量](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings)用到反引号``.   
+这里用到其实一个用法——就是用一个字符$，加一个大括号{}，来解析一个值，这里如果不用${n + 1}，单独用n+1，会产生三个元素结点，而这里只需要其中一个结点。  
+
+模板字符串使用反引号 (` `) 来代替普通字符串中的用双引号和单引号。模板字符串可以包含特定语法（${expression}）的占位符。占位符中的表达式和周围的文本会一起传递给一个默认函数，该函数负责将所有的部分连接起来，如果一个模板字符串由表达式开头，则该字符串被称为带标签的模板字符串，该表达式通常是一个函数，它会在模板字符串处理后被调用，在输出最终结果前，你都可以通过该函数来对模板字符串进行操作处理。在模版字符串内使用反引号（`）时，需要在它前面加转义符（\）。  
+
+```
+    if (n + 1 > 3) {
+        n = 0
+        current($(`.imgs>img:nth-child(${n + 1})`))
+    }//这里用到的反引号``
+
+    if (n + 1 <= 3) {
+        current($(`.imgs>img:nth-child(${n + 1})`))
+    }//这里不可以让n+1超过3,这里一直都是1,2——2,3——3,1——1,2这样循环。
+```
+
+```
+`string text ${expression} string text`
+
+tag `string text ${expression} string text`
+```
+
 ## 用过的git
 我发现**第一次commit**提交之后，commit的描述写错了，发现根本删除不了，可能**第一次commit**就相当于把整个仓库都删除了吧，所以必须要保留第一次的提交，所以最后我把整个仓库都删除了。并且把本地的.git隐藏文件也删除。重新创建仓库解决。第二次commit就可以开始做各种操作了，这里介绍一个新的操作git rebase(压制)。  
 
