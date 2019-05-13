@@ -1,66 +1,44 @@
-$('.imgs>img:nth-child(1)').addClass('current')
-$('.imgs>img:nth-child(2)').addClass('enter')
-$('.imgs>img:nth-child(3)').addClass('enter')
+init()//初始化
 
 var s = 3
 var n
+//下面的就是每个1秒无缝轮播的核心代码
 setInterval(() => {
         n = (s % 3)+1
-    
-    $(`.imgs>img:nth-child(${n})`).removeClass('current enter').addClass('leave').
+        
+        leave($(`.imgs>img:nth-child(${n})`)).
         one('transitionend', function (e) {
-            $(e.currentTarget).removeClass('leave current').addClass('enter')//这里把e.currentTarget写成了'e.currentTarget'，整了半天才发现错误。
-            // console.log(e.currentTarget)
-            //removeClass()可以同时移除多个class
+            enter( $(e.currentTarget))
         })
     if (n + 1 > 3) {
         n = 0
-        $(`.imgs>img:nth-child(${n + 1})`).removeClass('enter leave').addClass('current')
-    }//这里用到的反引号``
+        current($(`.imgs>img:nth-child(${n + 1})`))
+    }
 
     if (n + 1 <= 3) {
-        $(`.imgs>img:nth-child(${n + 1})`).removeClass('enter leave').addClass('current')
-    }//这里不可以让n+1超过3,这里一直都是1,2——2,3——3,1——1,2这样循环。
+        current($(`.imgs>img:nth-child(${n + 1})`))
+    }
 
     s = s + 1
-}, 1000);
+}, 2000);
 
-// setTimeout(() => {
-//     $('.imgs>img:nth-child(1)').removeClass('current enter').addClass('leave').
-//     one('transitionend',function(e){
-//         $(e.currentTarget).removeClass('leave current').addClass('enter')//这里把e.currentTarget写成了'e.currentTarget'，整了半天才发现错误。
-//         console.log(e.currentTarget)//removeClass()可以同时移除多个class
-//     })
-//     $('.imgs>img:nth-child(2)').removeClass('enter current').addClass('current')
-// }, 2000)
-
-// setTimeout(() => {
-//     $('.imgs>img:nth-child(2)').removeClass('current enter').addClass('leave').
-//     one('transitionend',function(e){
-//         $(e.currentTarget).removeClass('leave current').addClass('enter')//这里把e.currentTarget写成了'e.currentTarget'，整了半天才发现错误。
-//         console.log(e.currentTarget)
-//     })
-//     $('.imgs>img:nth-child(3)').removeClass('enter current').addClass('current')
-// }, 4000)
-
-// setTimeout(() => {
-//     $('.imgs>img:nth-child(3)').removeClass('current enter').addClass('leave').
-//     one('transitionend',function(e){
-//         $(e.currentTarget).removeClass('leave current').addClass('enter')//这里把e.currentTarget写成了'e.currentTarget'，整了半天才发现错误。
-//         console.log(e.currentTarget)
-//     })
-//     $('.imgs>img:nth-child(1)').removeClass('enter current').addClass('current')
-// }, 6000)
-
-// setTimeout(() => {
-//     $('.imgs>img:nth-child(1)').removeClass('current enter').addClass('leave').
-//     one('transitionend',function(e){
-//         $(e.currentTarget).removeClass('current leave').addClass('enter')//这里把e.currentTarget写成了'e.currentTarget'，整了半天才发现错误。
-//         console.log(e.currentTarget)//removeClass()可以同时移除多个class
-//     })
-//     $('.imgs>img:nth-child(2)').removeClass('enter current').addClass('current')
-// }, 8000)
-
-
+//初始化函数
+function init(){
+    $('.imgs>img:nth-child(1)').addClass('current')
+    $('.imgs>img:nth-child(2)').addClass('enter')
+    $('.imgs>img:nth-child(3)').addClass('enter')
+}
+//离开的状态
+function leave($leave){
+    return $leave.removeClass('current enter').addClass('leave')
+}
+//准备进入的状态
+function enter($enter){
+    return $enter.removeClass('leave current').addClass('enter')
+}
+//呈现出来的当前状态
+function current($current){
+    return $current.removeClass('enter leave').addClass('current')
+}
 
 
