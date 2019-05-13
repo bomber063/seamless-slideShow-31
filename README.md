@@ -1,7 +1,41 @@
 # seamless-slideShow-31
 
+## 自己做的过程用到的部分JQ的API
 
+### removeClass()和addClass()
+[addClass()](https://www.jquery123.com/addClass/)对所有匹配的元素可以一次添加多个用空格隔开的样式类名  
+[removeClass()](https://www.jquery123.com/removeClass/)对所有匹配的元素可以一次添加多个用空格隔开的样式类名  
 
+```
+function enter($enter){
+    return $enter.removeClass('leave current').addClass('enter')
+}
+```
+
+### one()
+[one()](https://www.jquery123.com/one/)为元素的事件添加处理函数。处理函数在每个元素上每种事件类型**最多执行一次**。  
+
+```
+        leave($(`.imgs>img:nth-child(${n})`)).
+        one('transitionend', function (e) {
+            enter( $(e.currentTarget))
+        })
+```
+
+## 自己做的过程犯的低级错误
+这里把e.currentTarget错写成了'e.currentTarget'，整了半天才发现错误。  
+```
+        one('transitionend', function (e) {
+            enter( $(e.currentTarget))
+            //这里把e.currentTarget写成了'e.currentTarget'，整了半天才发现错误。
+            // console.log(e.currentTarget)
+            //removeClass()可以同时移除多个class
+        })
+```
+
+## 原生JS的Transition​Event事件——transitionend
+[transitionend](https://developer.mozilla.org/zh-CN/docs/Web/Events/transitionend)  
+transitionend 事件会在 CSS transition 结束后触发. 当transition完成前移除transition时，比如移除css的transition-property 属性，事件将不会被触发.如在transition完成前设置  display 为"none"，事件同样不会被触发。
 
 ## 用过的git
 我发现**第一次commit**提交之后，commit的描述写错了，发现根本删除不了，可能**第一次commit**就相当于把整个仓库都删除了吧，所以必须要保留第一次的提交，所以最后我把整个仓库都删除了。并且把本地的.git隐藏文件也删除。重新创建仓库解决。第二次commit就可以开始做各种操作了，这里介绍一个新的操作git rebase(压制)。  
