@@ -18,10 +18,10 @@ function getImage(fn){
 
 //获取到n和n+1的函数
 function getn(fn){
-    if(fn>3){
-        fn=fn%3
-        if(fn%3===0){
-            fn=3
+    if(fn>5){
+        fn=fn%5
+        if(fn%5===0){
+            fn=5
         }
     }
     return fn
