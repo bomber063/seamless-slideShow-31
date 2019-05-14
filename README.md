@@ -54,7 +54,7 @@ transitionend 事件会在 CSS transition 结束后触发. 当transition完成�
         current($(`.imgs>img:nth-child(${n + 1})`))
     }//这里不可以让n+1超过3,这里一直都是1,2——2,3——3,1——1,2这样循环。
 ```
-
+简单的示例  
 ```
 `string text ${expression} string text`
 
