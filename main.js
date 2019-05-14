@@ -1,32 +1,38 @@
+let n
 init()//初始化
 
-var s = 3
-var n
 //下面的就是每个1秒无缝轮播的核心代码
 setInterval(() => {
-        n = (s % 3)+1
-        
-        leave($(`.imgs>img:nth-child(${n})`)).
+        leave(getImage(n)).
         one('transitionend', function (e) {
             enter( $(e.currentTarget))
         })
-    if (n + 1 > 3) {
-        n = 0
-        current($(`.imgs>img:nth-child(${n + 1})`))
-    }
-
-    if (n + 1 <= 3) {
-        current($(`.imgs>img:nth-child(${n + 1})`))
-    }
-
-    s = s + 1
+        current(getImage(n+1))
+        n=n+1
 }, 2000);
+
+//获取到对应的n的图片
+function getImage(fn){
+    return $(`.imgs>img:nth-child(${getn(fn)})`)
+}
+
+//获取到n和n+1的函数
+function getn(fn){
+    if(fn>3){
+        fn=fn%3
+        if(fn%3===0){
+            fn=3
+        }
+    }
+    return fn
+}
 
 //初始化函数
 function init(){
-    $('.imgs>img:nth-child(1)').addClass('current')
-    $('.imgs>img:nth-child(2)').addClass('enter')
-    $('.imgs>img:nth-child(3)').addClass('enter')
+    n=1
+    $(`.imgs>img:nth-child(${n})`).addClass('current')
+    // $(getn(fn)).addClass('current')
+    .siblings().addClass('enter')
 }
 //离开的状态
 function leave($leave){
