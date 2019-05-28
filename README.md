@@ -126,7 +126,12 @@ function getImage(fn){
 最后，建议在变基之前创建一个备份（backup）分支。
 
 # 2019.5.28修复一个Bug
-* 在移除这个轮播的页面后，再次回到这个页面会导致一些滚动的异常(当没有看页面的时候，cpu会认为不需要花太精力在该页面上，所以原来0.5秒滚动一次，可能变成1s滚动一次)，此时就通过离开该页面的时候是轮播停止，回到该页面的时候使轮播继续在离开的位置继续滚动。
+* 在移除这个轮播的页面后，再次回到这个页面会导致一些滚动的异常(当没有看页面的时候，cpu会认为不需要花太精力在该页面上，所以原来0.5秒滚动一次，可能变成1s滚动一次，也有可能是把好几次的状态在移到该页面的时候同时进行变化)，此时就通过离开该页面的时候是轮播停止，回到该页面的时候使轮播继续在离开的位置继续滚动。
 * 用到[visibilitychange事件](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/visibilitychange_event).
 * 根据[visibility​State](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/visibilityState)显示的不同状态，比如hidden或者visible等来判断停止和重新开始滚动。
 
+## 方方老师用的是doucment.hidden
+* [doucment.hidden](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/hidden)返回的是true/false。效果其实也是类似的，只是取值不同。
+
+## 此方法无法实现倒着滚动
+* 倒着滚动见下一个滚动播放链接。
