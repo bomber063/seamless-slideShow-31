@@ -124,3 +124,8 @@ function getImage(fn){
 结束之后，如果你使用git push推送到远程仓库，会被拒绝，此时需要使用**强制推送**  
 `git push -f`  
 最后，建议在变基之前创建一个备份（backup）分支。
+
+# 2019.5.28修复一个Bug
+* 在移除这个轮播的页面后，再次回到这个页面会导致一些滚动的异常，此时就通过离开该页面的时候是轮播停止，回到该页面的时候使轮播继续在离开的位置继续滚动。
+* 用到[visibilitychange事件](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/visibilitychange_event).
+* 根据[visibility​State](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/visibilityState)显示的不同状态，比如hidden或者visible等来判断停止和重新开始滚动。
