@@ -134,4 +134,4 @@ function getImage(fn){
 * [doucment.hidden](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/hidden)返回的是true/false。效果其实也是类似的，只是取值不同。
 
 ## 此方法无法实现倒着滚动
-* 倒着滚动见下一个滚动播放链接。
+* 倒着滚动见下一个滚动播放[链接](https://github.com/bomber063/maybe-last-seamless-slideShow-33)。
