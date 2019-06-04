@@ -133,5 +133,6 @@ function getImage(fn){
 ## 方方老师用的是doucment.hidden
 * [doucment.hidden](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/hidden)返回的是true/false。效果其实也是类似的，只是取值不同。
 
-## 此方法无法实现倒着滚动
-* 倒着滚动见下一个滚动播放[链接](https://github.com/bomber063/maybe-last-seamless-slideShow-33)。
+## 此轮播不足的地方
+* 此方法无法实现倒着滚动，也不能实现从第一个张图片调到第三张或者第四张图片的功能。
+* 倒着滚动及跳着滚动见下一个滚动播放[链接](https://github.com/bomber063/maybe-last-seamless-slideShow-33)。
